@@ -9,7 +9,48 @@ void printCards(Cards cards)
 
     for (unsigned int i = 0; i < cards.size(); i++)
     {
-        std::cout << cards[i].color << " " << cards[i].value << "  ";
+        switch (cards[i].value)
+        {
+            case jack:
+                std::cout << "jack";
+                break;
+            case queen:
+                std::cout << "queen";
+                break;
+            case king:
+                std::cout << "king";
+                break;
+            case ace:
+                std::cout << "ace";
+                break;
+            default:
+                std::cout << cards[i].value;
+        }
+
+        std::cout << " ";
+
+        switch (cards[i].color)
+        {
+            case hearts:
+                std::cout << "hearts";
+                break;
+            case diamonds:
+                std::cout << "diamonds";
+                break;
+            case clubs:
+                std::cout << "clubs";
+                break;
+            case spades:
+                std::cout << "spades";
+                break;
+        }
+
+        if (cards[i].selected)
+        {
+            std::cout << " (selected)";
+        }
+
+        std::cout << std::endl;
     }
 }
 

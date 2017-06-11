@@ -45,6 +45,7 @@ struct Card
 
     Color color;
     Value value;
+    bool selected = false;
 };
 
 typedef std::vector<Card> Cards;
