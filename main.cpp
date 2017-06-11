@@ -3,7 +3,10 @@
 
 void printCards(Cards cards)
 {
-
+    for (unsigned int i = 0; i < cards.size(); i++)
+    {
+        std::cout << cards[i].color << " " << cards[i].value << "  ";
+    }
 }
 
 int main()

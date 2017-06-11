@@ -5,15 +5,15 @@
 
 enum Color
 {
-    heart,
-    diamond,
-    club,
+    hearts,
+    diamonds,
+    clubs,
     spades
 };
 
 enum Value
 {
-    three,
+    three = 3,
     four,
     five,
     six,
@@ -29,6 +29,20 @@ enum Value
 
 struct Card
 {
+    Card();
+
+    Card(Color color, Value value);
+
+    friend bool operator<(const Card& l, const Card& r)
+    {
+        if (l.value == r.value)
+        {
+            return l.color < r.color;
+        }
+
+        return l.value < r.value;
+    }
+
     Color color;
     Value value;
 };

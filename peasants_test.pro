@@ -8,7 +8,8 @@ SOURCES += mainGT.cpp \
     Player.cpp \
     Card.cpp \
     Deck.cpp \
-    Game.cpp
+    Game.cpp \
+    DeckGT.cpp
 
 HEADERS += \
     Player.hpp \

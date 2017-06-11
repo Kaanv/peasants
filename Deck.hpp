@@ -6,17 +6,17 @@
 class Deck
 {
 public:
-    Deck(int numberOfPlayers)
-    {
-        for (int i = 0; i < 4; i++)
-        {
-
-        }
-    }
+    Deck(int numberOfPlayers);
     void shuffleCards();
     Card takeCard();
+    Cards getCards();
+    void resetDeck(int numberOfPlayers);
+    Card getStartingCard();
 
 private:
+    Card createStartingCard(int numberOfPlayers);
+
     Cards cards;
+    Card startingCard;
 };
 #endif
