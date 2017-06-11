@@ -1,8 +1,12 @@
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 #include "Game.hpp"
 
 void printCards(Cards cards)
 {
+    std::cout << "Number of cards: " << cards.size() << std::endl;
+
     for (unsigned int i = 0; i < cards.size(); i++)
     {
         std::cout << cards[i].color << " " << cards[i].value << "  ";
@@ -11,6 +15,8 @@ void printCards(Cards cards)
 
 int main()
 {
+    std::srand(std::time(0));
+
     int choice;
     int numberOfPlayers;
 
@@ -35,7 +41,7 @@ int main()
 
             std::cout << "Current player " << game.getCurrentPlayer().getId() << std::endl;
 
-            std::cout << "Your cards: ";
+            std::cout << "Your cards:" << std::endl;
             printCards(game.getCurrentPlayer().getCards());
             std::cout << std::endl;
             std::cout << "1. Select Cards" << std::endl;
