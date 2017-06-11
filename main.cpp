@@ -57,10 +57,12 @@ int main()
                     case 1:
                         break;
                     case 2:
+                        game.getCurrentPlayer().unselectAllCards();
                         break;
                     case 3:
                         break;
                     case 4:
+                        game.getCurrentPlayer().unselectAllCards();
                         std::cout << "Passing turn" << std::endl;
                         break;
                     default:
