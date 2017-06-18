@@ -41,3 +41,8 @@ void Game::nextPlayer()
 {
     currentPlayerId = (currentPlayerId + 1) % players.size();
 }
+
+void Game::throwCards(Cards cards)
+{
+
+}

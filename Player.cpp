@@ -21,14 +21,6 @@ void Player::selectCard(int cardId)
     cards[cardId].select();
 }
 
-void Player::selectCards(std::vector<int> cardIds)
-{
-    for (unsigned int i = 0; i < cardIds.size(); i++)
-    {
-        selectCard(cardIds[i]);
-    }
-}
-
 void Player::unselectCard(int cardId)
 {
     cards[cardId].selected = false;
@@ -50,9 +42,30 @@ void Player::unselectAllCards()
     }
 }
 
-void Player::useSelectedCards()
+Cards Player::getSelectedCards()
 {
+    Cards selectedCards;
 
+    for (unsigned int i = 0; i < cards.size(); i++)
+    {
+        if (cards[i].selected)
+        {
+            selectedCards.push_back(cards[i]);
+        }
+    }
+
+    return selectedCards;
+}
+
+void Player::removeSelectedCards()
+{
+    for (int i = cards.size() - 1; i >= 0; i--)
+    {
+        if (cards[i].selected)
+        {
+            cards.erase(cards.begin() + i);
+        }
+    }
 }
 
 int Player::getId()

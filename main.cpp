@@ -105,7 +105,17 @@ int main()
                         game.getCurrentPlayer().unselectAllCards();
                         break;
                     case 3:
-                        game.getCurrentPlayer().useSelectedCards();
+                        try
+                        {
+                            Cards selectedCards = game.getCurrentPlayer().getSelectedCards();
+                            game.throwCards(selectedCards);
+                            game.getCurrentPlayer().removeSelectedCards();
+                            std::cout << "Thrown selected cards" << std::endl;
+                        }
+                        catch (...)
+                        {
+                            std::cout << "Cards weren't valid" << std::endl;
+                        }
                         break;
                     case 4:
                         game.getCurrentPlayer().unselectAllCards();

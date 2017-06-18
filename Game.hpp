@@ -5,6 +5,11 @@
 #include "Card.hpp"
 #include "Deck.hpp"
 
+class Table
+{
+
+};
+
 class Game
 {
 public:
@@ -15,11 +20,13 @@ public:
     bool hasEnded();
     Player &getCurrentPlayer();
     void nextPlayer();
+    void throwCards(Cards cards);
 
 private:
     Players players;
     Deck deck;
     int currentPlayerId;
+    Table table;
 };
 
 #endif
