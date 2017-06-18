@@ -82,25 +82,30 @@ int main()
 
             std::cout << "Current player " << game.getCurrentPlayer().getId() << std::endl;
 
-            std::cout << "Your cards:" << std::endl;
-            printCards(game.getCurrentPlayer().getCards());
-            std::cout << std::endl;
-            std::cout << "1. Select cards" << std::endl;
+            std::cout << "1. Select card" << std::endl;
             std::cout << "2. Unselect all cards" << std::endl;
             std::cout << "3. Throw selected cards" << std::endl;
             std::cout << "4. Pass your turn" << std::endl;
-            std::cin >> option;
 
             while (option != 3 and option != 4)
             {
+                printCards(game.getCurrentPlayer().getCards());
+                std::cin >> option;
+
                 switch (option)
                 {
                     case 1:
+                        int cardToSelect;
+                        std::cout << "Enter card number:" << std::endl;
+                        std::cin >> cardToSelect;
+                        game.getCurrentPlayer().selectCard(cardToSelect);
+                        std::cout << "Card " << cardToSelect << " selected" << std::endl;
                         break;
                     case 2:
                         game.getCurrentPlayer().unselectAllCards();
                         break;
                     case 3:
+                        game.getCurrentPlayer().useSelectedCards();
                         break;
                     case 4:
                         game.getCurrentPlayer().unselectAllCards();

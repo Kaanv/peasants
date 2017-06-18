@@ -33,6 +33,11 @@ struct Card
 
     Card(Color color, Value value);
 
+    void select()
+    {
+        selected = true;
+    }
+
     friend bool operator<(const Card& l, const Card& r)
     {
         if (l.value == r.value)
@@ -45,7 +50,7 @@ struct Card
 
     Color color;
     Value value;
-    bool selected = false;
+    bool selected;
 };
 
 typedef std::vector<Card> Cards;

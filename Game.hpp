@@ -13,7 +13,7 @@ public:
     void distributeCardsFromDeck();
     int findStartingPlayer();
     bool hasEnded();
-    Player getCurrentPlayer();
+    Player &getCurrentPlayer();
     void nextPlayer();
 
 private:

@@ -32,7 +32,7 @@ bool Game::hasEnded()
     return false;
 }
 
-Player Game::getCurrentPlayer()
+Player& Game::getCurrentPlayer()
 {
     return players[currentPlayerId];
 }
