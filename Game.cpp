@@ -24,6 +24,21 @@ void Game::distributeCardsFromDeck()
 
 int Game::findStartingPlayer()
 {
+    Card startingCard = deck.getStartingCard();
+
+    for (unsigned int i = 0; i < players.size(); i++)
+    {
+        Cards playerCards = players[i].getCards();
+
+        for (unsigned int j = 0; j < playerCards.size(); j++)
+        {
+            if (playerCards[j] == startingCard)
+            {
+                return i;
+            }
+        }
+    }
+
     return 0;
 }
 
