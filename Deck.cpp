@@ -34,7 +34,7 @@ void Deck::resetDeck(int numberOfPlayers)
     {
         for (int value = startingCard.value; value <= ace; value++)
         {
-            cards.push_back(Card(Color(color), Value(value)));
+            cards.push_back(Card(Value(value), Color(color)));
         }
     }
 
@@ -65,5 +65,5 @@ Card Deck::createStartingCard(int numberOfPlayers)
             smallestValue = three;
     }
 
-    return Card(hearts, smallestValue);
+    return Card(smallestValue, hearts);
 }

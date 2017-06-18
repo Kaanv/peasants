@@ -2,7 +2,7 @@
 
 Card::Card() {}
 
-Card::Card(Color color, Value value)
+Card::Card(Value value, Color color)
 {
     this->color = color;
     this->value = value;

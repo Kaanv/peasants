@@ -31,7 +31,7 @@ struct Card
 {
     Card();
 
-    Card(Color color, Value value);
+    Card(Value value, Color color);
 
     void select()
     {
@@ -46,6 +46,11 @@ struct Card
         }
 
         return l.value < r.value;
+    }
+
+    friend bool operator==(const Card& l, const Card& r)
+    {
+        return (l.value == r.value and l.color == r.color);
     }
 
     Color color;
