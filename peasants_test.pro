@@ -10,13 +10,16 @@ SOURCES += mainGT.cpp \
     Deck.cpp \
     Game.cpp \
     DeckGT.cpp \
-    PlayerGT.cpp
+    PlayerGT.cpp \
+    Table.cpp \
+    TableGT.cpp
 
 HEADERS += \
     Player.hpp \
     Card.hpp \
     Deck.hpp \
-    Game.hpp
+    Game.hpp \
+    Table.hpp
 
 
 LIBS += -lgtest

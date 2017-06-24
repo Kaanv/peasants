@@ -4,11 +4,7 @@
 #include "Player.hpp"
 #include "Card.hpp"
 #include "Deck.hpp"
-
-class Table
-{
-
-};
+#include "Table.hpp"
 
 class Game
 {
@@ -21,6 +17,7 @@ public:
     Player &getCurrentPlayer();
     void nextPlayer();
     void throwCards(Cards cards);
+    Cards getCardsFromTableTop();
 
 private:
     Players players;

@@ -61,3 +61,8 @@ void Game::throwCards(Cards cards)
 {
 
 }
+
+Cards Game::getCardsFromTableTop()
+{
+
+}

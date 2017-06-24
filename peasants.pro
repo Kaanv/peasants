@@ -7,11 +7,13 @@ SOURCES += main.cpp \
     Player.cpp \
     Card.cpp \
     Deck.cpp \
-    Game.cpp
+    Game.cpp \
+    Table.cpp
 
 HEADERS += \
     Player.hpp \
     Card.hpp \
     Deck.hpp \
-    Game.hpp
+    Game.hpp \
+    Table.hpp
 
