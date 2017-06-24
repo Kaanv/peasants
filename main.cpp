@@ -82,6 +82,9 @@ int main()
 
             std::cout << "Current player " << game.getCurrentPlayer().getId() << std::endl;
 
+            std::cout << "Cards on table:" << std::endl;
+            printCards(game.getCardsFromTableTop());
+
             std::cout << "1. Select card" << std::endl;
             std::cout << "2. Unselect all cards" << std::endl;
             std::cout << "3. Throw selected cards" << std::endl;

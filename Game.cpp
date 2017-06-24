@@ -59,10 +59,10 @@ void Game::nextPlayer()
 
 void Game::throwCards(Cards cards)
 {
-
+    table.throwCards(cards);
 }
 
 Cards Game::getCardsFromTableTop()
 {
-
+    return table.getCardsFromTop();
 }
