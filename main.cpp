@@ -118,10 +118,12 @@ int main()
                         catch (...)
                         {
                             std::cout << "Cards weren't valid" << std::endl;
+                            option = 0;
                         }
                         break;
                     case 4:
                         game.getCurrentPlayer().unselectAllCards();
+                        game.passCurrentPlayerTurn();
                         std::cout << "Passing turn" << std::endl;
                         break;
                     default:

@@ -9,6 +9,7 @@ Game::Game(int numberOfPlayers) : deck(numberOfPlayers)
 
     distributeCardsFromDeck();
     currentPlayerId = findStartingPlayer();
+    passedTurns = 0;
 }
 
 void Game::distributeCardsFromDeck()
@@ -59,10 +60,35 @@ void Game::nextPlayer()
 
 void Game::throwCards(Cards cards)
 {
+    if (passedTurns >= players.size() - 1)
+    {
+        checkIfCardsHaveSameValue(cards);
+    }
+    else
+    {
+        checkIfCardsCouldBeThrown(cards);
+    }
+
     table.throwCards(cards);
+    passedTurns = 0;
 }
 
 Cards Game::getCardsFromTableTop()
 {
     return table.getCardsFromTop();
+}
+
+void Game::passCurrentPlayerTurn()
+{
+    passedTurns++;
+}
+
+void Game::checkIfCardsHaveSameValue(Cards cards)
+{
+
+}
+
+void Game::checkIfCardsCouldBeThrown(Cards cards)
+{
+
 }

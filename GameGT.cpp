@@ -6,14 +6,9 @@ namespace
 
 class GameTest : public ::testing::Test {
 protected:
-    GameTest() : game(4)
-    {
-    }
+    GameTest() : game(4) {}
 
-    virtual ~GameTest()
-    {
-
-    }
+    virtual ~GameTest() {}
 
     Game game;
 
