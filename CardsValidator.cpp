@@ -10,26 +10,35 @@ void CardsValidator::checkIfCardsCouldBeThrown(Cards cards, Cards cardsOnTableTo
 {
     if (not cardsOnTableTop.size())
     {
-        bool startingCardFound = false;
+        validateGameStartingCards(cards);
+    }
+    else
+    {
+        throw std::runtime_error("Only starting cards available");
+    }
+}
 
-        for (unsigned int i = 0; i < cards.size(); i++)
+void CardsValidator::validateGameStartingCards(Cards cards)
+{
+    bool startingCardFound = false;
+
+    for (unsigned int i = 0; i < cards.size(); i++)
+    {
+        if (cards[i] == startingCard)
         {
-            if (cards[i] == startingCard)
-            {
-                startingCardFound = true;
-                break;
-            }
-
-            if (cards[i].value != startingCard.value)
-            {
-                throw std::runtime_error("You have to start with starting card");
-            }
+            startingCardFound = true;
+            break;
         }
 
-        if (not startingCardFound)
+        if (cards[i].value != startingCard.value)
         {
             throw std::runtime_error("You have to start with starting card");
         }
+    }
+
+    if (not startingCardFound)
+    {
+        throw std::runtime_error("You have to start with starting card");
     }
 }
 

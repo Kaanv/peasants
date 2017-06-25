@@ -27,9 +27,14 @@ TEST_F(CardsValidatorTest, WhenThereIsNoCardsOnTableTwoSevensWithSevenHeartsIncl
     EXPECT_NO_THROW(sut.checkIfCardsCouldBeThrown(Cards({Card(seven, spades), Card(seven, hearts)}), Cards({})));
 }
 
-TEST_F(CardsValidatorTest, WhenThereIsCardDifferentThanSevenErrorShouldBeRaised)
+TEST_F(CardsValidatorTest, WhenThereIsNoCardsOnTableAndCardDifferentThanSevenWasThrownErrorShouldBeRaised)
 {
     EXPECT_THROW(sut.checkIfCardsCouldBeThrown(Cards({Card(eight, hearts), Card(seven, hearts)}), Cards({})), std::runtime_error);
+}
+
+TEST_F(CardsValidatorTest, WhenThereIsCardOnTableCardWithSameValueCantBeThrown)
+{
+    EXPECT_THROW(sut.checkIfCardsCouldBeThrown(Cards({Card(eight, spades)}), Cards({Card(eight, hearts)})), std::runtime_error);
 }
 
 }

@@ -10,6 +10,8 @@ public:
     void checkIfCardsCouldBeThrown(Cards cards, Cards cardsOnTableTop);
 
 private:
+    void validateGameStartingCards(Cards cards);
+
     Card startingCard;
 };
 
