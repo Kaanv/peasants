@@ -5,7 +5,10 @@
 
 void printCards(Cards cards)
 {
-    std::cout << "Number of cards: " << cards.size() << std::endl;
+    if (not cards.size())
+    {
+        std::cout << "No cards";
+    }
 
     for (unsigned int i = 0; i < cards.size(); i++)
     {
@@ -82,11 +85,11 @@ int main()
         {
             int option = 0;
 
-            std::cout << "Current player " << game.getCurrentPlayer().getId() << std::endl;
+            std::cout << "NEW TURN" << std::endl;
 
             std::cout << std::endl << "Cards on table:" << std::endl;
             printCards(game.getCardsFromTableTop());
-            std::cout << std::endl << "Options:" << std::endl;
+            std::cout << std::endl << std::endl << "Options:" << std::endl;
 
             std::cout << "1. Select card" << std::endl;
             std::cout << "2. Unselect all cards" << std::endl;
@@ -96,6 +99,7 @@ int main()
             while (option != 3 and option != 4)
             {
                 std::cout << std::endl;
+                std::cout << "Current player " << game.getCurrentPlayer().getId() << std::endl;
                 printCards(game.getCurrentPlayer().getCards());
                 std::cin >> option;
 
