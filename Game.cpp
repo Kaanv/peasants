@@ -1,6 +1,7 @@
 #include "Game.hpp"
 
-Game::Game(int numberOfPlayers) : deck(numberOfPlayers)
+Game::Game(int numberOfPlayers) : deck(numberOfPlayers),
+                                  cardsValidator(deck.getStartingCard())
 {
     for (int i = 0; i < numberOfPlayers; i++)
     {

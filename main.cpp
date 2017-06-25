@@ -115,9 +115,9 @@ int main()
                             game.getCurrentPlayer().removeSelectedCards();
                             std::cout << "Thrown selected cards" << std::endl;
                         }
-                        catch (...)
+                        catch (const std::runtime_error & e)
                         {
-                            std::cout << "Cards weren't valid" << std::endl;
+                            std::cout << e.what() << std::endl;
                             option = 0;
                         }
                         break;
