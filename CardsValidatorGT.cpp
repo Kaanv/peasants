@@ -37,4 +37,26 @@ TEST_F(CardsValidatorTest, WhenThereIsCardOnTableCardWithSameValueCantBeThrown)
     EXPECT_THROW(sut.checkIfCardsCouldBeThrown(Cards({Card(eight, spades)}), Cards({Card(eight, hearts)})), std::runtime_error);
 }
 
+TEST_F(CardsValidatorTest, WhenThereIsCardOnTableThenCardWithHigherValueCanBeThrown)
+{
+    EXPECT_NO_THROW(sut.checkIfCardsCouldBeThrown(Cards({Card(nine, spades)}), Cards({Card(eight, hearts)})));
+}
+
+TEST_F(CardsValidatorTest, WhenThereIsCardOnTableThenMultipleCardsEvenWithHigherValueCantBeThrown)
+{
+    EXPECT_THROW(sut.checkIfCardsCouldBeThrown(Cards({Card(nine, spades), Card(nine, hearts)}), Cards({Card(eight, hearts)})), std::runtime_error);
+}
+
+TEST_F(CardsValidatorTest, WhenThereIsThreeCardOnTableThenLessCardsEvenWithHigherValueCantBeThrown)
+{
+    EXPECT_THROW(sut.checkIfCardsCouldBeThrown(Cards({Card(nine, spades), Card(nine, hearts)}),
+                                               Cards({Card(eight, hearts), Card(eight, spades), Card(eight, diamonds)})), std::runtime_error);
+}
+
+TEST_F(CardsValidatorTest, WhenThereIsTwoCardOnTableThenTwoCardsWithDifferentValuesEvenWhenHigherValueCantBeThrown)
+{
+    EXPECT_THROW(sut.checkIfCardsCouldBeThrown(Cards({Card(nine, spades), Card(ten, hearts)}),
+                                               Cards({Card(eight, hearts), Card(eight, spades)})), std::runtime_error);
+}
+
 }

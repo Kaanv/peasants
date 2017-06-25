@@ -14,7 +14,28 @@ void CardsValidator::checkIfCardsCouldBeThrown(Cards cards, Cards cardsOnTableTo
     }
     else
     {
-        throw std::runtime_error("Only starting cards available");
+        if (cards.size() != cardsOnTableTop.size())
+        {
+            throw std::runtime_error("You must throw same number of cards as previous player");
+        }
+
+        checkIfCardsHaveSameValue(cards);
+
+        if (not (cards[0].value > cardsOnTableTop[0].value))
+        {
+            throw std::runtime_error("Cards must be higher than previous");
+        }
+    }
+}
+
+void CardsValidator::checkIfCardsHaveSameValue(Cards cards)
+{
+    for (unsigned int i = 1; i < cards.size(); i++)
+    {
+        if (cards[i].value != cards[i - 1].value)
+        {
+            throw std::runtime_error("Cards must be have same value");
+        }
     }
 }
 

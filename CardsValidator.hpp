@@ -8,6 +8,7 @@ class CardsValidator
 public:
     CardsValidator(Card startingCard);
     void checkIfCardsCouldBeThrown(Cards cards, Cards cardsOnTableTop);
+    void checkIfCardsHaveSameValue(Cards cards);
 
 private:
     void validateGameStartingCards(Cards cards);
