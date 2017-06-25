@@ -7,7 +7,7 @@ void printCards(Cards cards)
 {
     if (not cards.size())
     {
-        std::cout << "No cards";
+        std::cout << "No cards" << std::endl;
     }
 
     for (unsigned int i = 0; i < cards.size(); i++)
@@ -89,7 +89,7 @@ int main()
 
             std::cout << std::endl << "Cards on table:" << std::endl;
             printCards(game.getCardsFromTableTop());
-            std::cout << std::endl << std::endl << "Options:" << std::endl;
+            std::cout << std::endl << "Options:" << std::endl;
 
             std::cout << "1. Select card" << std::endl;
             std::cout << "2. Unselect all cards" << std::endl;
