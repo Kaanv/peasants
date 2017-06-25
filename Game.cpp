@@ -46,7 +46,17 @@ int Game::findStartingPlayer()
 
 bool Game::hasEnded()
 {
-    return false;
+    unsigned int playersThatEnded = 0;
+
+    for (unsigned int i = 0 ; i < players.size(); i++)
+    {
+        if (players[i].hasEnded())
+        {
+            playersThatEnded++;
+        }
+    }
+
+    return playersThatEnded >= players.size() - 1;
 }
 
 Player& Game::getCurrentPlayer()
@@ -57,6 +67,11 @@ Player& Game::getCurrentPlayer()
 void Game::nextPlayer()
 {
     currentPlayerId = (currentPlayerId + 1) % players.size();
+
+    if (players[currentPlayerId].hasEnded())
+    {
+        nextPlayer();
+    }
 }
 
 void Game::throwCards(Cards cards)

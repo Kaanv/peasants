@@ -68,6 +68,11 @@ void Player::removeSelectedCards()
     }
 }
 
+bool Player::hasEnded()
+{
+    return not cards.size();
+}
+
 int Player::getId()
 {
     return playerId;

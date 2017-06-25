@@ -145,6 +145,8 @@ int main()
 
             game.nextPlayer();
         }
+
+        std::cout << "Game has ended!" << std::endl;
     }
 
     return 0;
