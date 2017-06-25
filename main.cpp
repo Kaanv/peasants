@@ -9,6 +9,8 @@ void printCards(Cards cards)
 
     for (unsigned int i = 0; i < cards.size(); i++)
     {
+        std::cout << "[" << i << "] ";
+
         switch (cards[i].value)
         {
             case jack:
@@ -82,8 +84,9 @@ int main()
 
             std::cout << "Current player " << game.getCurrentPlayer().getId() << std::endl;
 
-            std::cout << "Cards on table:" << std::endl;
+            std::cout << std::endl << "Cards on table:" << std::endl;
             printCards(game.getCardsFromTableTop());
+            std::cout << std::endl << "Options:" << std::endl;
 
             std::cout << "1. Select card" << std::endl;
             std::cout << "2. Unselect all cards" << std::endl;
@@ -92,6 +95,7 @@ int main()
 
             while (option != 3 and option != 4)
             {
+                std::cout << std::endl;
                 printCards(game.getCurrentPlayer().getCards());
                 std::cin >> option;
 
