@@ -63,7 +63,7 @@ void Game::throwCards(Cards cards)
 {
     if (passedTurns >= players.size() - 1)
     {
-        checkIfCardsHaveSameValue(cards);
+        cardsValidator.checkIfCardsHaveSameValue(cards);
     }
     else
     {
@@ -84,7 +84,3 @@ void Game::passCurrentPlayerTurn()
     passedTurns++;
 }
 
-void Game::checkIfCardsHaveSameValue(Cards cards)
-{
-
-}
