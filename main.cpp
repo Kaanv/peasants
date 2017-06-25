@@ -126,9 +126,17 @@ int main()
                         }
                         break;
                     case 4:
-                        game.getCurrentPlayer().unselectAllCards();
-                        game.passCurrentPlayerTurn();
-                        std::cout << "Passing turn" << std::endl;
+                        if (not game.getCardsFromTableTop().size())
+                        {
+                            std::cout << "Cannot pass starting turn" << std::endl;
+                            option = 0;
+                        }
+                        else
+                        {
+                            game.getCurrentPlayer().unselectAllCards();
+                            game.passCurrentPlayerTurn();
+                            std::cout << "Passing turn" << std::endl;
+                        }
                         break;
                     default:
                         std::cout << "Wrong option" << std::endl;
