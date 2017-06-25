@@ -5,6 +5,7 @@
 #include "Card.hpp"
 #include "Deck.hpp"
 #include "Table.hpp"
+#include "CardsValidator.hpp"
 
 class Game
 {
@@ -25,8 +26,9 @@ public:
 private:
     Players players;
     Deck deck;
+    CardsValidator cardsValidator;
     int currentPlayerId;
-    int passedTurns;
+    unsigned int passedTurns;
     Table table;
 };
 

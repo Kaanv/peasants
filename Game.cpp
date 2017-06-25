@@ -66,7 +66,7 @@ void Game::throwCards(Cards cards)
     }
     else
     {
-        checkIfCardsCouldBeThrown(cards);
+        cardsValidator.checkIfCardsCouldBeThrown(cards, table.getCardsFromTop());
     }
 
     table.throwCards(cards);
@@ -84,11 +84,6 @@ void Game::passCurrentPlayerTurn()
 }
 
 void Game::checkIfCardsHaveSameValue(Cards cards)
-{
-
-}
-
-void Game::checkIfCardsCouldBeThrown(Cards cards)
 {
 
 }

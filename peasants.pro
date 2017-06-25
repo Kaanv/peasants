@@ -8,12 +8,14 @@ SOURCES += main.cpp \
     Card.cpp \
     Deck.cpp \
     Game.cpp \
-    Table.cpp
+    Table.cpp \
+    CardsValidator.cpp
 
 HEADERS += \
     Player.hpp \
     Card.hpp \
     Deck.hpp \
     Game.hpp \
-    Table.hpp
+    Table.hpp \
+    CardsValidator.hpp
 

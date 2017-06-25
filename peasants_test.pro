@@ -12,14 +12,17 @@ SOURCES += mainGT.cpp \
     DeckGT.cpp \
     PlayerGT.cpp \
     Table.cpp \
-    TableGT.cpp
+    TableGT.cpp \
+    CardsValidator.cpp \
+    CardsValidatorGT.cpp
 
 HEADERS += \
     Player.hpp \
     Card.hpp \
     Deck.hpp \
     Game.hpp \
-    Table.hpp
+    Table.hpp \
+    CardsValidator.hpp
 
 
 LIBS += -lgtest
