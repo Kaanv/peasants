@@ -65,6 +65,7 @@ int main()
 
     int choice;
     int numberOfPlayers;
+    int numberOfRounds;
 
     std::cout << "-- PEASANTS --" << std::endl;
 
@@ -76,8 +77,10 @@ int main()
     if (choice == 1)
     {
         std::cout << "Number of players:" << std::endl;
-
         std::cin >> numberOfPlayers;
+
+        std::cout << "Number of rounds:" << std::endl;
+        std::cin >> numberOfRounds;
 
         Game game(numberOfPlayers);
 
@@ -99,7 +102,8 @@ int main()
             while (option != 3 and option != 4)
             {
                 std::cout << std::endl;
-                std::cout << "Current player " << game.getCurrentPlayer().getId() << std::endl;
+                std::cout << "Current player: " << game.getCurrentPlayer().getId() << std::endl;
+                std::cout << "Peasant level: " << game.getCurrentPlayer().getPeasantLevel() << std::endl;
                 printCards(game.getCurrentPlayer().getCards());
                 std::cin >> option;
                 try
