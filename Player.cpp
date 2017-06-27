@@ -103,6 +103,20 @@ Card Player::takeBestCard()
     return highestCard;
 }
 
+Card Player::takeCard(unsigned int cardId)
+{
+    if (cardId >= cards.size())
+    {
+        cardId = cards.size() -1;
+    }
+
+    Card card = cards[cardId];
+
+    cards.erase(cards.begin() + cardId);
+
+    return card;
+}
+
 int Player::getId()
 {
     return playerId;

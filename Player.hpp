@@ -21,6 +21,7 @@ public:
     void setPeasantLevel(int peasantLevel);
     int getPeasantLevel();
     Card takeBestCard();
+    Card takeCard(unsigned int cardId);
 
 private:
     int peasantLevel;

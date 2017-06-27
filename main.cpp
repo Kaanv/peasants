@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <algorithm>
 #include "Game.hpp"
 
 void printCards(Cards cards)
@@ -171,7 +172,46 @@ int main()
                     std::cout << "Cards that peasant " << game.getPlayer(id).getPeasantLevel() << " gave to his master" << std::endl;
                     printCards(cardsToGiveAway);
 
-                    unsigned int masterId = game.findMasterId(game.getPlayer(id).getPeasantLevel());
+                    unsigned int masterId = game.findOppositePlayerId(game.getPlayer(id).getPeasantLevel());
+
+                    for (unsigned int j = 0; j < cardsToGiveAway.size(); j++)
+                    {
+                        game.getPlayer(masterId).insertCard(cardsToGiveAway[j]);
+                    }
+                }
+            }
+
+            for (unsigned int id = 0; id < numberOfPlayers; id++)
+            {
+                if (game.getPlayer(id).getPeasantLevel() > 0)
+                {
+                    Cards cardsToGiveAway;
+
+                    std::cout << "Master " << game.getPlayer(id).getPeasantLevel() << " cards:" << std::endl;
+                    printCards(game.getPlayer(id).getCards());
+
+                    std::cout << "Which " << game.getPlayer(id).getPeasantLevel() << " cards do you want to give your peasant?";
+
+                    std::vector<int> cardsToGiveAwayIndiecies;
+
+                    for (int j = 0; j < game.getPlayer(id).getPeasantLevel(); j++)
+                    {
+                        int cardToGiveAwayIndex;
+                        std::cin >> cardToGiveAwayIndex;
+                        cardsToGiveAwayIndiecies.push_back(cardToGiveAwayIndex);
+                    }
+
+                    std::sort(cardsToGiveAwayIndiecies.begin(), cardsToGiveAwayIndiecies.end());
+
+                    for (int j = cardsToGiveAwayIndiecies.size() - 1; j >= 0 ; j--)
+                    {
+                        cardsToGiveAway.push_back(game.getPlayer(id).takeCard(cardsToGiveAwayIndiecies[j]));
+                    }
+
+                    std::cout << "Cards that master " << game.getPlayer(id).getPeasantLevel() << " gave to his peasant" << std::endl;
+                    printCards(cardsToGiveAway);
+
+                    unsigned int masterId = game.findOppositePlayerId(game.getPlayer(id).getPeasantLevel());
 
                     for (unsigned int j = 0; j < cardsToGiveAway.size(); j++)
                     {

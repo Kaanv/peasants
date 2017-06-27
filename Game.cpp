@@ -114,7 +114,7 @@ Player &Game::getPlayer(unsigned int id)
     return players[id];
 }
 
-unsigned int Game::findMasterId(int peasantLevel)
+unsigned int Game::findOppositePlayerId(int peasantLevel)
 {
     for (unsigned i = 0; i < players.size(); i++)
     {
