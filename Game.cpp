@@ -85,7 +85,7 @@ Cards Game::getCardsFromTableTop()
 
 void Game::passCurrentPlayerTurn()
 {
-    if (not getCardsFromTableTop().size())
+    if (getCardsFromTableTop().size())
     {
         passedTurns++;
     }
