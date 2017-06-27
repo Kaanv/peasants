@@ -127,6 +127,11 @@ unsigned int Game::findOppositePlayerId(int peasantLevel)
     return 0;
 }
 
+void Game::setStartingPlayer()
+{
+    currentPlayerId = findStartingPlayer();
+}
+
 void Game::resetRound()
 {
     deck.resetDeck(players.size());
@@ -134,6 +139,7 @@ void Game::resetRound()
     currentPlayerId = findStartingPlayer();
     passedTurns = 0;
     playersThatEnded.clear();
+    table.clearTable();
 }
 
 void Game::setPeasantsLevels()

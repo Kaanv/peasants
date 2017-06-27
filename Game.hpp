@@ -25,6 +25,7 @@ public:
     void checkIfPlayerHasEnded();
     Player& getPlayer(unsigned int id);
     unsigned int findOppositePlayerId(int peasantLevel);
+    void setStartingPlayer();
 
 private:
     void resetRound();

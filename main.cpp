@@ -220,6 +220,7 @@ int main()
                 }
             }
 
+            game.setStartingPlayer();
         }
 
         std::cout << "Game has ended!" << std::endl;
