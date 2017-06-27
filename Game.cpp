@@ -114,6 +114,11 @@ Player &Game::getPlayer(unsigned int id)
     return players[id];
 }
 
+unsigned int Game::findMasterId(int peasantLevel)
+{
+    return 0;
+}
+
 void Game::resetRound()
 {
     deck.resetDeck(players.size());

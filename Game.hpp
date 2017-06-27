@@ -24,6 +24,7 @@ public:
     void nextRound();
     void checkIfPlayerHasEnded();
     Player& getPlayer(unsigned int id);
+    unsigned int findMasterId(int peasantLevel);
 
 private:
     void resetRound();

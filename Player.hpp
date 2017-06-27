@@ -20,6 +20,7 @@ public:
     bool hasEnded();
     void setPeasantLevel(int peasantLevel);
     int getPeasantLevel();
+    Card takeBestCard();
 
 private:
     int peasantLevel;

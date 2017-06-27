@@ -84,6 +84,11 @@ int Player::getPeasantLevel()
     return peasantLevel;
 }
 
+Card Player::takeBestCard()
+{
+    return Card(seven, hearts);
+}
+
 int Player::getId()
 {
     return playerId;

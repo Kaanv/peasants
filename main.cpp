@@ -156,6 +156,30 @@ int main()
             {
                 std::cout << "Player " << id << " level: " << game.getPlayer(id).getPeasantLevel() << std::endl;
             }
+
+            for (unsigned int id = 0; id < numberOfPlayers; id++)
+            {
+                if (game.getPlayer(id).getPeasantLevel() < 0)
+                {
+                    Cards cardsToGiveAway;
+
+                    for (int j = 0; j > game.getPlayer(id).getPeasantLevel(); j--)
+                    {
+                        cardsToGiveAway.push_back(game.getPlayer(id).takeBestCard());
+                    }
+
+                    std::cout << "Cards that peasant " << game.getPlayer(id).getPeasantLevel() << " gave to his master" << std::endl;
+                    printCards(cardsToGiveAway);
+
+                    unsigned int masterId = game.findMasterId(game.getPlayer(id).getPeasantLevel());
+
+                    for (unsigned int j = 0; j < cardsToGiveAway.size(); j++)
+                    {
+                        game.getPlayer(masterId).insertCard(cardsToGiveAway[j]);
+                    }
+                }
+            }
+
         }
 
         std::cout << "Game has ended!" << std::endl;
