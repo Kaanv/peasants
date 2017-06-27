@@ -16,13 +16,14 @@ public:
     void distributeCardsFromDeck();
     int findStartingPlayer();
     bool hasEnded();
-    Player &getCurrentPlayer();
+    Player& getCurrentPlayer();
     void nextPlayer();
     void throwCards(Cards cards);
     Cards getCardsFromTableTop();
     void passCurrentPlayerTurn();
     void nextRound();
     void checkIfPlayerHasEnded();
+    Player& getPlayer(unsigned int id);
 
 private:
     void resetRound();

@@ -150,6 +150,12 @@ int main()
             }
 
             game.nextRound();
+
+            std::cout << "Round has ended! Peasant levels:" << std::endl;
+            for (unsigned int id = 0; id < numberOfPlayers; id++)
+            {
+                std::cout << "Player " << id << " level: " << game.getPlayer(id).getPeasantLevel() << std::endl;
+            }
         }
 
         std::cout << "Game has ended!" << std::endl;

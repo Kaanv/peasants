@@ -109,6 +109,11 @@ void Game::checkIfPlayerHasEnded()
     }
 }
 
+Player &Game::getPlayer(unsigned int id)
+{
+    return players[id];
+}
+
 void Game::resetRound()
 {
     deck.resetDeck(players.size());
