@@ -127,6 +127,7 @@ int main()
                             case 3:
                                 game.throwCards(game.getCurrentPlayer().getSelectedCards());
                                 game.getCurrentPlayer().removeSelectedCards();
+                                game.checkIfPlayerHasEnded();
                                 std::cout << "Thrown selected cards" << std::endl;
                                 break;
                             case 4:

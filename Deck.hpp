@@ -6,6 +6,7 @@
 class Deck
 {
 public:
+    Deck();
     Deck(int numberOfPlayers);
     void shuffleCards();
     Card takeCard();

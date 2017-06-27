@@ -1,17 +1,14 @@
 #include "Game.hpp"
 #include <stdexcept>
 
-Game::Game(int numberOfPlayers) : deck(numberOfPlayers),
-                                  cardsValidator(deck.getStartingCard())
+Game::Game(int numberOfPlayers) : cardsValidator(deck.getStartingCard())
 {
     for (int i = 0; i < numberOfPlayers; i++)
     {
         players.push_back(Player(i));
     }
 
-    distributeCardsFromDeck();
-    currentPlayerId = findStartingPlayer();
-    passedTurns = 0;
+    resetRound();
 }
 
 void Game::distributeCardsFromDeck()
@@ -47,17 +44,7 @@ int Game::findStartingPlayer()
 
 bool Game::hasEnded()
 {
-    unsigned int playersThatEnded = 0;
-
-    for (unsigned int i = 0 ; i < players.size(); i++)
-    {
-        if (players[i].hasEnded())
-        {
-            playersThatEnded++;
-        }
-    }
-
-    return playersThatEnded >= players.size() - 1;
+    return playersThatEnded.size() >= players.size() - 1;
 }
 
 Player& Game::getCurrentPlayer()
@@ -109,6 +96,54 @@ void Game::passCurrentPlayerTurn()
 
 void Game::nextRound()
 {
+    setPeasantsLevels();
+    resetRound();
+}
 
+void Game::checkIfPlayerHasEnded()
+{
+    if (players[currentPlayerId].hasEnded())
+    {
+        playersThatEnded.push_back(currentPlayerId);
+    }
+}
+
+void Game::resetRound()
+{
+    deck.resetDeck(players.size());
+    distributeCardsFromDeck();
+    currentPlayerId = findStartingPlayer();
+    passedTurns = 0;
+    playersThatEnded.clear();
+}
+
+void Game::setPeasantsLevels()
+{
+    for (unsigned int i = 0; i < players.size(); i++)
+    {
+        if (not players[i].hasEnded())
+        {
+            playersThatEnded.push_back(i);
+        }
+    }
+
+    int peasantLevel;
+
+    if (players.size() == 4 or players.size() == 5)
+    {
+        peasantLevel = 2;
+    }
+    else
+    {
+        peasantLevel = 3;
+    }
+
+    for (unsigned i = 0; i < playersThatEnded.size(); i++)
+    {
+        players[playersThatEnded[i]].setPeasantLevel(peasantLevel);
+        peasantLevel--;
+
+        if (peasantLevel == 0 and players.size() != 5) peasantLevel--;
+    }
 }
 

@@ -7,14 +7,8 @@ namespace
 
 class DeckTest : public ::testing::Test {
 protected:
-    DeckTest()
-    {
-    }
-
-    virtual ~DeckTest()
-    {
-
-    }
+    DeckTest() {}
+    virtual ~DeckTest() {}
 };
 
 TEST_F(DeckTest, DeckForFourPlayersShouldHaveStartingCardSevenHearts)

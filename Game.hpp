@@ -6,6 +6,7 @@
 #include "Deck.hpp"
 #include "Table.hpp"
 #include "CardsValidator.hpp"
+#include <vector>
 
 class Game
 {
@@ -21,14 +22,19 @@ public:
     Cards getCardsFromTableTop();
     void passCurrentPlayerTurn();
     void nextRound();
+    void checkIfPlayerHasEnded();
 
 private:
+    void resetRound();
+    void setPeasantsLevels();
+
     Players players;
     Deck deck;
     CardsValidator cardsValidator;
     int currentPlayerId;
     unsigned int passedTurns;
     Table table;
+    std::vector<int> playersThatEnded;
 };
 
 #endif

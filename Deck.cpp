@@ -2,6 +2,8 @@
 
 #include <algorithm>
 
+Deck::Deck() {}
+
 Deck::Deck(int numberOfPlayers)
 {
     resetDeck(numberOfPlayers);
