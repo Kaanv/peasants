@@ -48,6 +48,11 @@ struct Card
         return l.value < r.value;
     }
 
+    friend bool operator>(const Card& l, const Card& r)
+    {
+        return not (l < r);
+    }
+
     friend bool operator==(const Card& l, const Card& r)
     {
         return (l.value == r.value and l.color == r.color);

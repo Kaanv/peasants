@@ -86,7 +86,21 @@ int Player::getPeasantLevel()
 
 Card Player::takeBestCard()
 {
-    return Card(seven, hearts);
+    unsigned int highestCardId = 0;
+
+    for (unsigned int i = 1; i < cards.size(); i++)
+    {
+        if (cards[i] > cards[highestCardId])
+        {
+            highestCardId = i;
+        }
+    }
+
+    Card highestCard = cards[highestCardId];
+
+    cards.erase(cards.begin() + highestCardId);
+
+    return highestCard;
 }
 
 int Player::getId()
