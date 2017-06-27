@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include <stdexcept>
 
 Game::Game(int numberOfPlayers) : deck(numberOfPlayers),
                                   cardsValidator(deck.getStartingCard())
@@ -96,6 +97,13 @@ Cards Game::getCardsFromTableTop()
 
 void Game::passCurrentPlayerTurn()
 {
-    passedTurns++;
+    if (not getCardsFromTableTop().size())
+    {
+        passedTurns++;
+    }
+    else
+    {
+        throw std::runtime_error("Cannot pass starting turn");
+    }
 }
 

@@ -102,48 +102,38 @@ int main()
                 std::cout << "Current player " << game.getCurrentPlayer().getId() << std::endl;
                 printCards(game.getCurrentPlayer().getCards());
                 std::cin >> option;
-
-                switch (option)
+                try
                 {
-                    case 1:
-                        int cardToSelect;
-                        std::cout << "Enter card number:" << std::endl;
-                        std::cin >> cardToSelect;
-                        game.getCurrentPlayer().selectCard(cardToSelect);
-                        std::cout << "Card " << cardToSelect << " selected" << std::endl;
-                        break;
-                    case 2:
-                        game.getCurrentPlayer().unselectAllCards();
-                        break;
-                    case 3:
-                        try
-                        {
-                            Cards selectedCards = game.getCurrentPlayer().getSelectedCards();
-                            game.throwCards(selectedCards);
+                    switch (option)
+                    {
+                        case 1:
+                            int cardToSelect;
+                            std::cout << "Enter card number:" << std::endl;
+                            std::cin >> cardToSelect;
+                            game.getCurrentPlayer().selectCard(cardToSelect);
+                            std::cout << "Card " << cardToSelect << " selected" << std::endl;
+                            break;
+                        case 2:
+                            game.getCurrentPlayer().unselectAllCards();
+                            break;
+                        case 3:
+                            game.throwCards(game.getCurrentPlayer().getSelectedCards());
                             game.getCurrentPlayer().removeSelectedCards();
                             std::cout << "Thrown selected cards" << std::endl;
-                        }
-                        catch (const std::runtime_error & e)
-                        {
-                            std::cout << e.what() << std::endl;
-                            option = 0;
-                        }
-                        break;
-                    case 4:
-                        if (not game.getCardsFromTableTop().size())
-                        {
-                            std::cout << "Cannot pass starting turn" << std::endl;
-                            option = 0;
-                        }
-                        else
-                        {
-                            game.getCurrentPlayer().unselectAllCards();
+                            break;
+                        case 4:
                             game.passCurrentPlayerTurn();
+                            game.getCurrentPlayer().unselectAllCards();
                             std::cout << "Passing turn" << std::endl;
-                        }
-                        break;
-                    default:
-                        std::cout << "Wrong option" << std::endl;
+                            break;
+                        default:
+                            std::cout << "Wrong option" << std::endl;
+                    }
+                }
+                catch (const std::runtime_error & e)
+                {
+                    std::cout << e.what() << std::endl;
+                    option = 0;
                 }
             }
 
