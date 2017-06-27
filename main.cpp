@@ -64,8 +64,8 @@ int main()
     std::srand(std::time(0));
 
     int choice;
-    int numberOfPlayers;
-    int numberOfRounds;
+    unsigned int numberOfPlayers;
+    unsigned int numberOfRounds;
 
     std::cout << "-- PEASANTS --" << std::endl;
 
@@ -84,64 +84,69 @@ int main()
 
         Game game(numberOfPlayers);
 
-        while (not game.hasEnded())
+        for (unsigned int i = 0; i < numberOfRounds; i++)
         {
-            int option = 0;
+            std::cout << "Round number " << (i + 1) << std::endl;
 
-            std::cout << "NEW TURN" << std::endl;
-
-            std::cout << std::endl << "Cards on table:" << std::endl;
-            printCards(game.getCardsFromTableTop());
-            std::cout << std::endl << "Options:" << std::endl;
-
-            std::cout << "1. Select card" << std::endl;
-            std::cout << "2. Unselect all cards" << std::endl;
-            std::cout << "3. Throw selected cards" << std::endl;
-            std::cout << "4. Pass your turn" << std::endl;
-
-            while (option != 3 and option != 4)
+            while (not game.hasEnded())
             {
-                std::cout << std::endl;
-                std::cout << "Current player: " << game.getCurrentPlayer().getId() << std::endl;
-                std::cout << "Peasant level: " << game.getCurrentPlayer().getPeasantLevel() << std::endl;
-                printCards(game.getCurrentPlayer().getCards());
-                std::cin >> option;
-                try
+                int option = 0;
+
+                std::cout << "NEW TURN" << std::endl;
+
+                std::cout << std::endl << "Cards on table:" << std::endl;
+                printCards(game.getCardsFromTableTop());
+                std::cout << std::endl << "Options:" << std::endl;
+
+                std::cout << "1. Select card" << std::endl;
+                std::cout << "2. Unselect all cards" << std::endl;
+                std::cout << "3. Throw selected cards" << std::endl;
+                std::cout << "4. Pass your turn" << std::endl;
+
+                while (option != 3 and option != 4)
                 {
-                    switch (option)
+                    std::cout << std::endl;
+                    std::cout << "Current player: " << game.getCurrentPlayer().getId() << std::endl;
+                    std::cout << "Peasant level: " << game.getCurrentPlayer().getPeasantLevel() << std::endl;
+                    printCards(game.getCurrentPlayer().getCards());
+                    std::cin >> option;
+                    try
                     {
-                        case 1:
-                            int cardToSelect;
-                            std::cout << "Enter card number:" << std::endl;
-                            std::cin >> cardToSelect;
-                            game.getCurrentPlayer().selectCard(cardToSelect);
-                            std::cout << "Card " << cardToSelect << " selected" << std::endl;
-                            break;
-                        case 2:
-                            game.getCurrentPlayer().unselectAllCards();
-                            break;
-                        case 3:
-                            game.throwCards(game.getCurrentPlayer().getSelectedCards());
-                            game.getCurrentPlayer().removeSelectedCards();
-                            std::cout << "Thrown selected cards" << std::endl;
-                            break;
-                        case 4:
-                            game.passCurrentPlayerTurn();
-                            game.getCurrentPlayer().unselectAllCards();
-                            std::cout << "Passing turn" << std::endl;
-                            break;
-                        default:
-                            std::cout << "Wrong option" << std::endl;
+                        switch (option)
+                        {
+                            case 1:
+                                int cardToSelect;
+                                std::cout << "Enter card number:" << std::endl;
+                                std::cin >> cardToSelect;
+                                game.getCurrentPlayer().selectCard(cardToSelect);
+                                std::cout << "Card " << cardToSelect << " selected" << std::endl;
+                                break;
+                            case 2:
+                                game.getCurrentPlayer().unselectAllCards();
+                                break;
+                            case 3:
+                                game.throwCards(game.getCurrentPlayer().getSelectedCards());
+                                game.getCurrentPlayer().removeSelectedCards();
+                                std::cout << "Thrown selected cards" << std::endl;
+                                break;
+                            case 4:
+                                game.passCurrentPlayerTurn();
+                                game.getCurrentPlayer().unselectAllCards();
+                                std::cout << "Passing turn" << std::endl;
+                                break;
+                            default:
+                                std::cout << "Wrong option" << std::endl;
+                        }
+                    }
+                    catch (const std::runtime_error & e)
+                    {
+                        std::cout << e.what() << std::endl;
+                        option = 0;
                     }
                 }
-                catch (const std::runtime_error & e)
-                {
-                    std::cout << e.what() << std::endl;
-                    option = 0;
-                }
-            }
 
-            game.nextPlayer();
+                game.nextPlayer();
+            }
         }
 
         std::cout << "Game has ended!" << std::endl;
