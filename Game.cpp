@@ -116,6 +116,14 @@ Player &Game::getPlayer(unsigned int id)
 
 unsigned int Game::findMasterId(int peasantLevel)
 {
+    for (unsigned i = 0; i < players.size(); i++)
+    {
+        if (players[i].getPeasantLevel() == -peasantLevel)
+        {
+            return i;
+        }
+    }
+
     return 0;
 }
 
