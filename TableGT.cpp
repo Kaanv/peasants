@@ -45,4 +45,13 @@ TEST_F(TableTest, CardsOnTableShouldNotBeSelected)
     EXPECT_FALSE(cardsOnTop[1].selected);
 }
 
+TEST_F(TableTest, EmptyVectorOfCardsShouldBeReturnedWhenTableWasCleared)
+{
+    Table table;
+    Cards cards = {Card(seven, hearts), Card(seven, spades)};
+    table.throwCards(cards);
+    table.clearTable();
+    EXPECT_EQ(Cards(), table.getCardsFromTop());
+}
+
 }

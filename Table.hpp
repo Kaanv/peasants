@@ -8,6 +8,7 @@ class Table
 public:
     Cards getCardsFromTop();
     void throwCards(Cards cards);
+    void clearTable();
 
 private:
     Cards cardsOnTop;
