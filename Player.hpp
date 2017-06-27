@@ -18,6 +18,8 @@ public:
     int getId();
     void removeSelectedCards();
     bool hasEnded();
+    void setPeasantLevel(int peasantLevel);
+    int getPeasantLevel();
 
 private:
     int peasantLevel;

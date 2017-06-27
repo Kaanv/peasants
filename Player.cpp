@@ -4,6 +4,7 @@
 Player::Player(int playerId)
 {
     this->playerId = playerId;
+    peasantLevel = 0;
 }
 
 Cards Player::getCards()
@@ -71,6 +72,16 @@ void Player::removeSelectedCards()
 bool Player::hasEnded()
 {
     return not cards.size();
+}
+
+void Player::setPeasantLevel(int peasantLevel)
+{
+    this->peasantLevel = peasantLevel;
+}
+
+int Player::getPeasantLevel()
+{
+    return peasantLevel;
 }
 
 int Player::getId()
