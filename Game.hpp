@@ -20,6 +20,7 @@ public:
     void throwCards(Cards cards);
     Cards getCardsFromTableTop();
     void passCurrentPlayerTurn();
+    void nextRound();
 
 private:
     Players players;
