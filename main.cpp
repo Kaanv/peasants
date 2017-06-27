@@ -88,7 +88,7 @@ int main()
         {
             std::cout << "Round number " << (i + 1) << std::endl;
 
-            while (not game.hasEnded())
+            while (not game.hasRoundEnded())
             {
                 int option = 0;
 

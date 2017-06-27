@@ -43,7 +43,7 @@ int Game::findStartingPlayer()
     return 0;
 }
 
-bool Game::hasEnded()
+bool Game::hasRoundEnded()
 {
     return playersThatEnded.size() >= players.size() - 1;
 }

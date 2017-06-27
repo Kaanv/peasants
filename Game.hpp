@@ -15,7 +15,7 @@ public:
 
     void distributeCardsFromDeck();
     int findStartingPlayer();
-    bool hasEnded();
+    bool hasRoundEnded();
     Player& getCurrentPlayer();
     void nextPlayer();
     void throwCards(Cards cards);
